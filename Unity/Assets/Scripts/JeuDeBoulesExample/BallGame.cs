@@ -22,6 +22,7 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Runtime.Serialization;
 using System.Linq;
@@ -50,10 +51,10 @@ public class BallGame : BaseGame<JeuDeBoulesData> {
     private HighscoreMenu highscoreMenu;
 
     [SerializeField]
-    private GUIText turnText;
+    private Text turnText;
 
     [SerializeField]
-    private GUIText scoreText;
+    private Text scoreText;
 
     [SerializeField]
     private Transform targetCube;

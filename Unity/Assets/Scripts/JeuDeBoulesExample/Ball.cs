@@ -38,9 +38,9 @@ public class Ball : MonoBehaviour {
 
         //let's not render the GUI on the cubemap
 		if(cubemap != null) {
-			Camera.main.GetComponent<GUILayer>().enabled = false;
+			//Camera.main.GetComponent<GUILayer>().enabled = false;
 			Camera.main.RenderToCubemap(cubemap);
-			Camera.main.GetComponent<GUILayer>().enabled = true;
+			//Camera.main.GetComponent<GUILayer>().enabled = true;
 		}
         gameObject.name = "Ball";
         Data = new BallData();

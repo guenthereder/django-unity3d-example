@@ -30,6 +30,7 @@ import os
 
 # Create your models here.
 class Score(models.Model):
+    #pk = models.AutoField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     score = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)
@@ -42,6 +43,7 @@ class Score(models.Model):
         return '%s - %d' % (self.owner.username, self.score)
 
 class Savegame(models.Model):
+    #pk = models.AutoField()
     def update_filename(instance, filename):
         path = 'savegames/'
         format = '%s%s'%(instance.owner.pk, str(uuid.uuid4()))

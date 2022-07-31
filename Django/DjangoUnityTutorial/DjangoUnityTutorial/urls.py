@@ -17,9 +17,9 @@ admin.autodiscover()
 urlpatterns = [
     # Examples:
     #url(r'^$', 'app.views.home', name='home'),
-    path('', include('unitybackendapp.urls', namespace='unitybackendapp')),
+    path('api/', include('unitybackendapp.urls', namespace='api')),
 
-    path('api/', include(router.urls)),
+    # path('api/', include(router.urls)),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

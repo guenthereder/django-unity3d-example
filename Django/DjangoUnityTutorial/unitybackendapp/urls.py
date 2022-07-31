@@ -28,18 +28,25 @@ from django.conf.urls.static import static
 from .views import home_view
 from unitybackendapp.api import ScoreAPI, UserAPI, GetAuthToken, SavegameAPI
 
-app_name = 'unitybackendapp'
+app_name = 'api'
 
 urlpatterns = [#'unitybackendapp.views',
 	path('', home_view, name='home_view'),
     
     #apis
-    path('api/score', ScoreAPI.as_view()),
-    path('api/user/<int:pk>', UserAPI.as_view()),
-    path('api/user', UserAPI.as_view()),
-    path('api/getauthtoken', GetAuthToken.as_view()),
-    path('api/savegame/<int:pk>', SavegameAPI.as_view()),
-    path('api/savegame', SavegameAPI.as_view()),
-    path('api/savegames/', SavegameAPI.as_view()),
+    path('score', ScoreAPI.as_view(), name='score'),
+    path('user/<int:pk>', UserAPI.as_view(), name='user-detail'),
+    path('user', UserAPI.as_view(), name='user-list'),
+    path('getauthtoken', GetAuthToken.as_view()),
+    path('savegame/<int:pk>', SavegameAPI.as_view(), name='savegame-detail'),
+    path('savegame', SavegameAPI.as_view(), name='savegame-list'),
+    path('savegames/<int:pk>', SavegameAPI.as_view(), name='savegames-detail'),
+    # path('api/score', ScoreAPI.as_view(), name='score'),
+    # path('api/user/<int:pk>', UserAPI.as_view(), name='user-detail'),
+    # path('api/user', UserAPI.as_view(), name='user-list'),
+    # path('api/getauthtoken', GetAuthToken.as_view()),
+    # path('api/savegame/<int:pk>', SavegameAPI.as_view(), name='savegame-detail'),
+    # path('api/savegame', SavegameAPI.as_view(), name='savegame-list'),
+    # path('api/savegames/<int:pk>', SavegameAPI.as_view(), name='savegames-detail'),
 
  ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
