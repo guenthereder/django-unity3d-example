@@ -30,7 +30,7 @@ import os
 
 # Create your models here.
 class Score(models.Model):
-    owner = models.ForeignKey(User)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     score = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -47,7 +47,7 @@ class Savegame(models.Model):
         format = '%s%s'%(instance.owner.pk, str(uuid.uuid4()))
         return os.path.join(path, format)
 
-    owner = models.ForeignKey(User)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     file = models.FileField(upload_to=update_filename)
     created = models.DateTimeField(auto_now_add=True)

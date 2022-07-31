@@ -21,22 +21,25 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
-from django.conf.urls import patterns, url, include
+from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from .views import home_view
 from unitybackendapp.api import ScoreAPI, UserAPI, GetAuthToken, SavegameAPI
 
-urlpatterns = patterns('unitybackendapp.views',
-	url(r'^$', 'home_view'),
+app_name = 'unitybackendapp'
+
+urlpatterns = [#'unitybackendapp.views',
+	path('', home_view, name='home_view'),
     
     #apis
-    url(r'^api/score', ScoreAPI.as_view()),
-    url(r'^api/user/(?P<pk>\d+)/$', UserAPI.as_view()),
-    url(r'^api/user', UserAPI.as_view()),
-    url(r'^api/getauthtoken', GetAuthToken.as_view()),
-    url(r'^api/savegame/(?P<pk>\d+)/$', SavegameAPI.as_view()),
-    url(r'^api/savegame', SavegameAPI.as_view()),
-    url(r'^api/savegames/', SavegameAPI.as_view()),
+    path('api/score', ScoreAPI.as_view()),
+    path('api/user/<int:pk>', UserAPI.as_view()),
+    path('api/user', UserAPI.as_view()),
+    path('api/getauthtoken', GetAuthToken.as_view()),
+    path('api/savegame/<int:pk>', SavegameAPI.as_view()),
+    path('api/savegame', SavegameAPI.as_view()),
+    path('api/savegames/', SavegameAPI.as_view()),
 
-) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+ ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
